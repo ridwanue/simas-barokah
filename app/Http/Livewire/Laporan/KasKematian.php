@@ -38,9 +38,10 @@ class KasKematian extends Component
         $warga_lunas = DB::table('iuran_kematian')
             ->select('nama', 'rt', DB::raw('SUM(jumlah) as total_kas_masuk'))
             ->join('data_warga', 'data_warga_id', '=', 'data_warga.id')
-            ->where('jumlah','>=','1562500')
             ->where('rt','=',$rt)
-            ->groupBy('nama','rt')->get();
+            ->groupBy('nama','rt')
+            ->havingRaw('SUM(jumlah) >= 1562500')
+            ->get();
 
         $this->total_lunas = $warga_lunas->count();
         $this->total_lunas_rp = $warga_lunas->sum('total_kas_masuk');
@@ -49,9 +50,10 @@ class KasKematian extends Component
         $warga_nunggak = DB::table('iuran_kematian')
             ->select('nama', 'rt', DB::raw('SUM(jumlah) as total_kas_masuk'))
             ->join('data_warga', 'data_warga_id', '=', 'data_warga.id')
-            ->where('jumlah','<','1562500')
             ->where('rt','=',$rt)
-            ->groupBy('nama','rt')->get();
+            ->groupBy('nama','rt')
+            ->havingRaw('SUM(jumlah) < 1562500')
+            ->get();
 
         $this->total_nunggak = $warga_nunggak->count();
         $this->total_nunggak_rp = $warga_nunggak->sum('total_kas_masuk');
