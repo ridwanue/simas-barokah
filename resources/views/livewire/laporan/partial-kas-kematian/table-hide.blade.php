@@ -3,7 +3,7 @@
     <div class="col-md-6">
         <div class="box box-success">
             <div class="box-header with-border">
-            <h3 class="box-title"><span class="badge bg-black">{{$total_lunas}}</span> Warga | Sudah Lunas | Saldo Masuk : @currency($total_lunas_rp)</h3>
+            <h3 class="box-title"><strong>{{$total_lunas}} Warga {{$rt}} Sudah Lunas</strong> | Saldo Masuk : @currency($total_lunas_rp)</h3>
             </div>
             
             <div class="box-body">
@@ -31,7 +31,7 @@
     <div class="col-md-6">
         <div class="box box-warning">
             <div class="box-header with-border">
-            <h3 class="box-title"><span class="badge bg-black">{{$total_nunggak}}</span> Warga | Belum Lunas | Saldo Masuk : @currency($total_nunggak_rp)</h3>
+            <h3 class="box-title"><strong>{{$total_nunggak}} Warga {{$rt}} Belum Lunas</strong> | Saldo Masuk : @currency($total_nunggak_rp)</h3>
             </div>
             
             <div class="box-body">

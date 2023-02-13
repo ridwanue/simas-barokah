@@ -6,7 +6,7 @@ use Livewire\Component;
 use DB;
 class KasKematian extends Component
 {
-    public $find, $warga_lunas, $warga_nunggak, $total_lunas, $total_nunggak;
+    public $find, $warga_lunas, $warga_nunggak, $total_lunas, $total_nunggak, $rt;
 
     public function mount(){
         $this->saldo_keluar = DB::table('kas_keluar_kematian')
@@ -59,7 +59,7 @@ class KasKematian extends Component
         $this->total_nunggak_rp = $warga_nunggak->sum('total_kas_masuk');
 
         $this->warga_nunggak = $warga_nunggak;
-        
+        $this->rt = $rt;
         }
     }
 }
