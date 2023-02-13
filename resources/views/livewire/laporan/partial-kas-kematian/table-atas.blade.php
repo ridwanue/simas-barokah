@@ -64,10 +64,12 @@
                 </tr>
                 <?php 
                         $total_pendaftar_aktif += $row->total_kas_masuk;
+                        $total_pendaftar += $row->jumlah_data;
                     ?>
                 @endforeach
                 <tr>
-                    <th colspan="3" style="font-size: 14px;">TOTAL</th>
+                    <th colspan="2" style="font-size: 14px;">TOTAL</th>
+                    <th style="font-size: 14px;">{{$total_pendaftar}} Pendaftar</th>
                     <th style="font-size: 14px;">@currency($total_pendaftar_aktif)</th>
                     <th>Action</th>
                 </tr>
