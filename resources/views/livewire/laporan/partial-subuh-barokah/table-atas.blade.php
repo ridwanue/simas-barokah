@@ -50,7 +50,6 @@
                     <td>@currency($row->jumlah)</td>
                 </tr>
                @endforeach
-
             </tbody></table>
             </div>
             

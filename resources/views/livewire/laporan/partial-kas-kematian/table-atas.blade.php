@@ -18,10 +18,16 @@
                     <td>{{date('d - M - Y', strtotime($row->tanggal))}}</td>
                     <td>{{$row->keperluan}}</td>
                     <td>@currency($row->jumlah)</td>
-                  
+                    
                 </tr>
+                <?php 
+                        $total_saldo_keluar += $row->jumlah;
+                    ?>
                 @endforeach
-
+                <tr>
+                    <th colspan="2" style="font-size: 14px;">TOTAL</th>
+                    <th style="font-size: 14px;">@currency($total_saldo_keluar)</th>
+                </tr>
             </tbody></table>
             </div>
             
@@ -56,8 +62,15 @@
                         <button wire:click="lihat('{{ addslashes($row->rt) }}', 'example')" type="button" class="btn btn-sm bg-primary"><i class="fa fa-eye"></i> Lihat</button>
                     </td>
                 </tr>
+                <?php 
+                        $total_pendaftar_aktif += $row->total_kas_masuk;
+                    ?>
                 @endforeach
-
+                <tr>
+                    <th colspan="3" style="font-size: 14px;">TOTAL</th>
+                    <th style="font-size: 14px;">@currency($total_pendaftar_aktif)</th>
+                    <th>Action</th>
+                </tr>
             </tbody></table>
             </div>
             
