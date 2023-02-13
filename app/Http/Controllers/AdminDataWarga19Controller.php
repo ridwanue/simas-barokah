@@ -43,7 +43,7 @@
 				}];
 			$this->col[] = ["label"=>"Status","callback"=>function($row) {
 				$data = DB::Table('iuran_kematian')->select(DB::raw('SUM(jumlah) as kas_masuk'))->where('data_warga_id', $row->id)->first();
-				if($data->kas_masuk == 1000000){
+				if($data->kas_masuk >= 1562500){
 					$status = '<span class="label label-success">'."Sudah Lunas".'</span>';
 				}else{
 					$status = '<span class="label label-warning">'."Belum Lunas".'</span>';
