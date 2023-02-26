@@ -18,9 +18,9 @@ class KasKematian extends Component
         $this->jumlah_kas_keluar = DB::Table('kas_keluar_kematian')->sum('jumlah');
         $this->sisa_saldo = $this->jumlah_kas_masuk-$this->jumlah_kas_keluar;
 
-        $this->pendaftar_aktif = DB::table('iuran_kematian')
-                            ->select('rt', DB::raw('COUNT(*) AS jumlah_data'), DB::raw('SUM(jumlah) AS total_kas_masuk'))
-                            ->join('data_warga', 'data_warga_id', '=', 'data_warga.id')
+        $this->pendaftar_aktif = DB::table('data_warga')
+                            ->select('rt', DB::raw('COUNT(DISTINCT iuran_kematian.data_warga_id) AS jumlah_data'), DB::raw('SUM(jumlah) AS total_kas_masuk'))
+                            ->leftJoin('iuran_kematian', 'data_warga.id', '=', 'iuran_kematian.data_warga_id')
                             ->groupBy('rt')
                             ->get();
 
